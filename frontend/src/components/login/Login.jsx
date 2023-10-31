@@ -119,12 +119,12 @@ const LoginForm = () => {
             )}
 
             <Button type={"submit"} isDisabled={!isValid || isSubmitting}>
-              Entrar
+            {isMember ? "Login" : "Registrar"}{" "}
             </Button>
             <Text>
               {isMember ? "Não tem uma conta?" : "Já tem uma conta?"}{" "}
               <button type="button" onClick={() => setIsMember(!isMember)}>
-                {isMember ? "Registrar" : "Logar"}
+                {isMember ? "Cadastrar-se" : "Faça seu login"}
               </button>
             </Text>
           </Stack>
@@ -150,7 +150,7 @@ const Login = () => {
         <Stack spacing={4} w={"full"} maxW={"md"}>
           <Image src={logoImg} alt={"Logo"} alignSelf={"center"} />
           <Heading fontSize={"2xl"} mb={15}>
-            Entre na sua conta
+            Faça seu cadastro!
           </Heading>
           <LoginForm />
         </Stack>
