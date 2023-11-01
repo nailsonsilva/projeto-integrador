@@ -1,6 +1,6 @@
 "use client";
 
-import React, { ReactNode } from "react";
+import React from "react";
 import {
   IconButton,
   Box,
@@ -12,26 +12,30 @@ import {
   Drawer,
   DrawerContent,
   useDisclosure,
-  BoxProps,
-  FlexProps,
+  Image,
 } from "@chakra-ui/react";
 import {
-  FiHome,
-  FiTrendingUp,
-  FiCompass,
+  FiFolder,
+  FiShoppingBag,
+  FiFileText,
   FiStar,
   FiSettings,
   FiMenu,
+  FiUser,
+  FiBookOpen,
+  FiPower,
 } from "react-icons/fi";
-import { IconType } from "react-icons";
-import { ReactText } from "react";
+import { useAuth } from "../../context/AuthContext";
+// import logoImg from "../../assets/logoImg.png"; // adicionar futuramente
 
 const LinkItems = [
-  { name: "Home", icon: FiHome },
-  { name: "Trending", icon: FiTrendingUp },
-  { name: "Explore", icon: FiCompass },
-  { name: "Favourites", icon: FiStar },
-  { name: "Settings", icon: FiSettings },
+  { name: "Principal", icon: FiUser },
+  { name: "Cadastros", icon: FiFolder },
+  { name: "Movimentação", icon: FiFileText },
+  { name: "Inventário", icon: FiStar },
+  { name: "Financeiro", icon: FiShoppingBag },
+  { name: "Relatórios", icon: FiBookOpen },
+  { name: "Configuração", icon: FiSettings },
 ];
 
 export default function Sidebar() {
@@ -64,27 +68,49 @@ export default function Sidebar() {
 }
 
 const SidebarContent = ({ onClose, ...rest }) => {
+  const { logoutUser } = useAuth();
+
   return (
     <Box
-      bg={useColorModeValue("white", "gray.900")}
-      borderRight="1px"
-      borderRightColor={useColorModeValue("gray.200", "gray.700")}
+      bg={useColorModeValue("#212529")}
+      borderRight="17.5px solid"
+      borderRightColor={useColorModeValue("#8EAC50")}
       w={{ base: "full", md: 60 }}
       pos="fixed"
       h="full"
       {...rest}
     >
       <Flex h="20" alignItems="center" mx="8" justifyContent="space-between">
-        <Text fontSize="2xl" fontFamily="monospace" fontWeight="bold">
-          Logo
+        {/* TODO: remover o texto 'Estoquix' e adicionar a imagem da logo */}
+        {/* <Image borderRadius="full" src={logoImg} alt="logo image" mt={5} /> */}
+        <Text
+          fontSize="2xl"
+          ml="8"
+          fontFamily="monospace"
+          fontWeight="bold"
+          color="white"
+        >
+          Estoquix
         </Text>
-        <CloseButton display={{ base: "flex", md: "none" }} onClick={onClose} />
+        <CloseButton
+          display={{ base: "flex", md: "none" }}
+          onClick={onClose}
+          color="white"
+        />
       </Flex>
       {LinkItems.map((link) => (
-        <NavItem key={link.name} icon={link.icon}>
+        <NavItem key={link.name} icon={link.icon} color="white">
           {link.name}
         </NavItem>
       ))}
+      <NavItem
+        key={"Sair"}
+        icon={FiPower}
+        color="white"
+        onClick={() => logoutUser()}
+      >
+        Sair
+      </NavItem>
     </Box>
   );
 };
@@ -147,7 +173,7 @@ const MobileNav = ({ onOpen, ...rest }) => {
       />
 
       <Text fontSize="2xl" ml="8" fontFamily="monospace" fontWeight="bold">
-        Logo
+        Estoquix
       </Text>
     </Flex>
   );
