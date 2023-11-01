@@ -1,4 +1,3 @@
-import { useAuth } from "../../context/AuthContext";
 import Sidebar from "../shared/Sidebar";
 
 const Dashboard = () => {
