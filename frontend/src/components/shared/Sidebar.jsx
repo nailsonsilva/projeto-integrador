@@ -26,7 +26,7 @@ import {
   FiPower,
 } from "react-icons/fi";
 import { useAuth } from "../../context/AuthContext";
-// import logoImg from "../../assets/logoImg.png"; // adicionar futuramente
+import logo2 from "../../assets/logo2.png";
 
 const LinkItems = [
   { name: "Principal", icon: FiUser },
@@ -80,36 +80,28 @@ const SidebarContent = ({ onClose, ...rest }) => {
       {...rest}
     >
       <Flex h="20" alignItems="center" mx="8" justifyContent="space-between">
-        {/* TODO: remover o texto 'Estoquix' e adicionar a imagem da logo */}
-        {/* <Image borderRadius="full" src={logoImg} alt="logo image" mt={5} /> */}
-        <Text
-          fontSize="2xl"
-          ml="8"
-          fontFamily="monospace"
-          fontWeight="bold"
-          color="white"
-        >
-          Estoquix
-        </Text>
+        <Image borderRadius="full" src={logo2} alt="logo image" mt={5} />
         <CloseButton
           display={{ base: "flex", md: "none" }}
           onClick={onClose}
           color="white"
         />
       </Flex>
-      {LinkItems.map((link) => (
-        <NavItem key={link.name} icon={link.icon} color="white">
-          {link.name}
+      <Box mt={5}>
+        {LinkItems.map((link) => (
+          <NavItem key={link.name} icon={link.icon} color="white">
+            {link.name}
+          </NavItem>
+        ))}
+        <NavItem
+          key={"Sair"}
+          icon={FiPower}
+          color="white"
+          onClick={() => logoutUser()}
+        >
+          Sair
         </NavItem>
-      ))}
-      <NavItem
-        key={"Sair"}
-        icon={FiPower}
-        color="white"
-        onClick={() => logoutUser()}
-      >
-        Sair
-      </NavItem>
+      </Box>
     </Box>
   );
 };

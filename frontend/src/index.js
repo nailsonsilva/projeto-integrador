@@ -3,8 +3,8 @@ import ReactDOM from "react-dom/client";
 import "./index.css";
 import { RouterProvider, createBrowserRouter } from "react-router-dom";
 import { ChakraProvider, createStandaloneToast } from "@chakra-ui/react";
-import Login from "./components/login/Login";
-import Dashboard from "./components/dashboard/Dashboard";
+import Login from "./pages/login/Login";
+import Dashboard from "./pages/dashboard/Dashboard";
 import AuthProvider from "./context/AuthContext";
 import ProtectedRoute from "./components/shared/ProtectedRoute";
 
