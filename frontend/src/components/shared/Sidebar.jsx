@@ -41,7 +41,7 @@ const LinkItems = [
 export default function Sidebar({ children }) {
   const { isOpen, onOpen, onClose } = useDisclosure();
   return (
-    <Box minH="100vh" bg={useColorModeValue("gray.100", "gray.900")}>
+    <Box minH="100vh" w='100%' bg={useColorModeValue("gray.100", "gray.900")}>
       <SidebarContent
         onClose={() => onClose}
         display={{ base: "none", md: "block" }}
@@ -74,7 +74,6 @@ const SidebarContent = ({ onClose, ...rest }) => {
       bg={useColorModeValue("#212529")}
       borderRight="17.5px solid"
       borderRightColor={useColorModeValue("#8EAC50")}
-      w={{ base: "full", md: 60 }}
       pos="fixed"
       h="full"
       {...rest}
