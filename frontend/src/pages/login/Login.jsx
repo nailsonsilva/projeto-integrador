@@ -14,7 +14,7 @@ import {
 } from "@chakra-ui/react";
 import { Formik, Form, useField } from "formik";
 import * as Yup from "yup";
-import logoImg from "../../assets/logoImg.png";
+import logo from "../../assets/logo-estoquix.png";
 import { useAuth } from "../../context/AuthContext";
 import { useNavigate } from "react-router-dom";
 import { useEffect, useState } from "react";
@@ -149,10 +149,10 @@ const Login = () => {
     <Stack minH={"100vh"} direction={{ base: "column", md: "row" }}>
       <Flex p={8} flex={1} alignItems={"center"} justifyContent={"center"}>
         <Stack spacing={4} w={"full"} maxW={"md"}>
-          <Image src={logoImg} alt={"Logo"} alignSelf={"center"} />
-          <Heading fontSize={"2xl"} mb={15}>
+          <Image src={logo} alt={"Logo"} alignSelf={"center"} />
+          {/* <Heading fontSize={"2xl"} mb={15}>
             Faça seu cadastro!
-          </Heading>
+          </Heading> */}
           <LoginForm />
         </Stack>
       </Flex>
