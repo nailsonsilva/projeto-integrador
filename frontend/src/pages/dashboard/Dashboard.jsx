@@ -1,6 +1,6 @@
 import Notificacao from "../../components/Notificacoes/Notificacoes";
 import Sidebar from "../../components/shared/Sidebar";
-import Velocimetro from "../../components/velocimetro/Velocimetro";
+import Velocimetro from "../../components/velocimetro/Chart";
 import { useAuth } from "../../context/AuthContext";
 import { Flex, Heading } from "@chakra-ui/react";
 
@@ -10,7 +10,7 @@ const Dashboard = () => {
     <Sidebar>
       {/* Coluna 2 */}
       <Flex minW="55%" p="4%" flexDir="column" overflow="auto" minH="100vh">
-        <Heading fontSize="24px">Velocimetro</Heading>
+        <Heading fontSize="24px">Situação do Estoque</Heading>
         <Flex
           flexDir="column"
           backgroundColor="#fff"
@@ -21,7 +21,7 @@ const Dashboard = () => {
         </Flex>
 
         <Heading fontSize="24px" mt="10">
-          Welcome Back!
+          Bem-vindo novamente!
         </Heading>
         <Flex
           flexDir="column"
