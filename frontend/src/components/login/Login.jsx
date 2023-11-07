@@ -10,6 +10,7 @@ import {
   Input,
   Stack,
   Text,
+  color,
 } from "@chakra-ui/react";
 import { Formik, Form, useField } from "formik";
 import * as Yup from "yup";

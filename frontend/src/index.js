@@ -5,6 +5,7 @@ import { RouterProvider, createBrowserRouter } from "react-router-dom";
 import { ChakraProvider, createStandaloneToast } from "@chakra-ui/react";
 import Login from "./components/login/Login";
 import Dashboard from "./components/dashboard/Dashboard";
+import Velocimetro from "./components/velocimetro/Velocimetro";
 import AuthProvider from "./context/AuthContext";
 import ProtectedRoute from "./components/shared/ProtectedRoute";
 
@@ -20,6 +21,11 @@ const router = createBrowserRouter([
     element: (
       <ProtectedRoute>
         <Dashboard />
+        <div>
+           <h3>Situação do Estoque</h3>
+           <Velocimetro/>
+        </div>
+       
       </ProtectedRoute>
     ),
   },
