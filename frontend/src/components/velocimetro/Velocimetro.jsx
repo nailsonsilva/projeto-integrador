@@ -1,19 +1,11 @@
-import React from 'react';
-import Speedometer from 'react-d3-speedometer'; 
+import { Progress, Stack } from "@chakra-ui/react";
+import React from "react";
 
-const Velocimetro = ({ value = 75 }) => {
+const Velocimetro = ({ value }) => {
   return (
-    <div>
-      <Speedometer
-        value={value}
-        minValue={0}
-        maxValue={100}
-        needleColor="blue"
-        startColor="red"
-        segments={3}
-      />
-    </div>
-   
+    <Stack spacing={5}>
+      <Progress colorScheme="green" height="32px" value={value} />
+    </Stack>
   );
 };
 

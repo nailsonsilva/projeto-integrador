@@ -120,7 +120,7 @@ const LoginForm = () => {
             )}
 
             <Button type={"submit"} isDisabled={!isValid || isSubmitting}>
-            {isMember ? "Login" : "Registrar"}{" "}
+              {isMember ? "Login" : "Registrar"}{" "}
             </Button>
             <Text>
               {isMember ? "Não tem uma conta?" : "Já tem uma conta?"}{" "}

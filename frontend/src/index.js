@@ -20,11 +20,6 @@ const router = createBrowserRouter([
     element: (
       <ProtectedRoute>
         <Dashboard />
-        <div>
-           <h3>Situação do Estoque</h3>
-           <Velocimetro/>
-        </div>
-       
       </ProtectedRoute>
     ),
   },
