@@ -1,11 +1,10 @@
 import Notificacao from "../../components/Notificacoes/Notificacoes";
 import Sidebar from "../../components/shared/Sidebar";
 import Velocimetro from "../../components/velocimetro/Chart";
-import { useAuth } from "../../context/AuthContext";
+import Calendario from "../../components/Calendario/Calendario";
 import { Flex, Heading } from "@chakra-ui/react";
 
 const Dashboard = () => {
-  // const { logoutUser } = useAuth();
   return (
     <Sidebar>
       {/* Coluna 2 */}
@@ -18,6 +17,15 @@ const Dashboard = () => {
           borderRadius="4px"
         >
           <Velocimetro value={40} />
+        </Flex>
+        <Heading fontSize="24px">Calendário</Heading>
+        <Flex
+          flexDir="column"
+          backgroundColor="#fff"
+          mt="10"
+          borderRadius="4px"
+        >
+          <Calendario />
         </Flex>
 
         <Heading fontSize="24px" mt="10">
