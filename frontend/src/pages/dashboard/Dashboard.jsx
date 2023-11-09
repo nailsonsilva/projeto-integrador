@@ -2,6 +2,8 @@ import Notificacao from "../../components/Notificacoes/Notificacoes";
 import Sidebar from "../../components/shared/Sidebar";
 import Velocimetro from "../../components/velocimetro/Chart";
 import Calendario from "../../components/Calendario/Calendario";
+import { useAuth } from "../../context/AuthContext";
+import DayTip from "../../components/cards/DayTip";
 import { Flex, Heading } from "@chakra-ui/react";
 
 const Dashboard = () => {
@@ -43,6 +45,7 @@ const Dashboard = () => {
           <Flex flexDir="column">
             <Flex overflow="auto">
               <Notificacao />
+              <DayTip />
             </Flex>
           </Flex>
         </Flex>
