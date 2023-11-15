@@ -4,55 +4,50 @@ import Velocimetro from "../../components/velocimetro/Chart";
 import Calendario from "../../components/Calendario/Calendario";
 import { useAuth } from "../../context/AuthContext";
 import DayTip from "../../components/cards/DayTip";
-import { Flex, Heading } from "@chakra-ui/react";
+import { Box, Flex, Grid, GridItem, Heading } from "@chakra-ui/react";
+import CardInfoEstoque from "../../components/CardInfoEstoque/CardInfoEstoque";
 
 const Dashboard = () => {
+
+  const dadosFaturamento = [
+    {
+      info: 'Prev. Fat. Mensal', valor: '10,5 mil', diferenca: '3,0 mil' 
+    },
+    {
+      info: 'Despesas Mensais', valor: '4,5 mil', diferenca: '1,0 mil' 
+    }
+  ]
+
   return (
     <Sidebar>
-      {/* Coluna 2 */}
-      <Flex minW="55%" p="4%" flexDir="column" overflow="auto" minH="100vh">
-        <Heading fontSize="24px">Situação do Estoque</Heading>
-        <Flex
-          flexDir="column"
-          backgroundColor="#fff"
-          mt="10"
-          borderRadius="4px"
-        >
-          <Velocimetro value={40} />
+      <Heading pl='10' mt='5' mb='10' fontSize='27px'>Seja bem vindo</Heading>
+      <Flex w='100%' pl={10}>
+        <Flex w='80%'>
+          <Flex w='60%'>
+            <Velocimetro />
+          </Flex>
+          <Flex w='40%' mr='10' flexDirection='column' alignItems='end'>
+            {dadosFaturamento.map((dados) =>
+              <CardInfoEstoque 
+                info={dados.info}
+                valor={dados.valor}
+                diferenca={dados.diferenca}              
+              />                                          
+            )}
+          </Flex>
         </Flex>
-        <Heading fontSize="24px">Calendário</Heading>
-        <Flex
-          flexDir="column"
-          backgroundColor="#fff"
-          mt="10"
-          borderRadius="4px"
-        >
+        <Flex w='20%'>
           <Calendario />
         </Flex>
-
-        <Heading fontSize="24px" mt="10">
-          Bem-vindo novamente!
-        </Heading>
-        <Flex
-          flexDir="column"
-          backgroundColor="#fff"
-          mt="10"
-          borderRadius="4px"
-        >
-          <Flex justifyContent="center" p="5">
-            <Heading fontSize="20px">Notificações</Heading>
-          </Flex>
-          <Flex flexDir="column">
-            <Flex overflow="auto">
-              <Notificacao />
-              <DayTip />
-            </Flex>
-          </Flex>
+      </Flex>
+      <Flex mt='10'>
+        <Flex w='80%' m='10' backgroundColor='#fff'>
+          <Notificacao />
+        </Flex>
+        <Flex mt='20' w='20%'>
+          <DayTip />
         </Flex>
       </Flex>
-
-      {/* coluna 3 */}
-      <Flex w="30%" bgColor="" p="3%" flexDir="column" overflow="auto"></Flex>
     </Sidebar>
   );
 };

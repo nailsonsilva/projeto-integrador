@@ -2,12 +2,9 @@ import {
     Table,
     Thead,
     Tbody,
-    Tfoot,
     Tr,
     Th,
-    Td,
-    TableCaption,
-    TableContainer,
+    Td,    
   } from '@chakra-ui/react'
 
 const Notificacao = () => {

@@ -41,7 +41,7 @@ const LinkItems = [
 export default function Sidebar({ children }) {
   const { isOpen, onOpen, onClose } = useDisclosure();
   return (
-    <Box minH="100vh" w='100%'>
+    <Box w='100%'>
       <SidebarContent
         onClose={() => onClose}
         display={{ base: "none", md: "block" }}
