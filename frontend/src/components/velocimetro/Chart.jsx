@@ -2,34 +2,27 @@ import React from "react";
 import { Chart } from 'react-google-charts';
 
 
-class VelocimetroChart extends React.Component {
-  render() {
-    const data = [
-      ['Label', 'Value'],
-      ['Estoque', 72], 
-    ];
+const PieChart = () => {
+  const data = [
+    ['Categoria', 'Quantidade'],
+    ['Produtos congelados', 20],
+    ['Produtos perecíveis', 15],
+    ['Bebidas', 10],
+  ];
 
-    const options = {
-      redFrom: 0, 
-      redTo: 50,  
-      yellowFrom: 50, 
-      yellowTo: 75, 
-      greenFrom: 75, 
-      greenTo: 100, 
-      minorTicks: 5, 
-    };
+  const options = {
+    title: 'Composição do estoque',
+  };
 
-    return (
-      <Chart
-        chartType="Gauge"
-        width="100%"
-        height="300px"
-        data={data}
-        options={options}
-      />
-    );
-  }
-}
+  return (
+    <Chart
+      chartType="PieChart"
+      width={'100%'}
+      height={'400px'}
+      data={data}
+      options={options}
+    />
+  );
+};
 
-export default VelocimetroChart;
-
+export default PieChart;
