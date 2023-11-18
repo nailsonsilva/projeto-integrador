@@ -10,11 +10,11 @@ import {
 const Notificacao = () => {
 
     const itens = [
-        {produto: 'Azeite Gallo', descricao: 'Lorem ipsum dolor sit amet consectetur adipisicing elit. Officiis soluta voluptas'},
-        {produto: 'Manteiga Ghee', descricao: 'Lorem ipsum dolor sit amet consectetur adipisicing elit. Officiis soluta voluptas'},
-        {produto: 'Arroz Camil', descricao: 'Lorem ipsum dolor sit amet consectetur adipisicing elit. Officiis soluta voluptas'},
-        {produto: 'Mel Puro', descricao: 'Lorem ipsum dolor sit amet consectetur adipisicing elit. Officiis soluta voluptas'},
-        {produto: 'Leite Uht Integral', descricao: 'Lorem ipsum dolor sit amet consectetur adipisicing elit. Officiis soluta voluptas'},
+        {produto: 'Azeite Gallo', descricao: 'Azeite de Oliva Extra Virgem - Vidro 500ML'},
+        {produto: 'Manteiga Ghee', descricao: 'Manteiga Com Sal - 200G'},
+        {produto: 'Arroz Camil', descricao: 'Arroz Branco Agulha Tipo 1 - 1KG'},
+        {produto: 'Mel Puro', descricao: 'Mel das Abelhinhas - 450G'},
+        {produto: 'Leite Uht Integral', descricao: 'Leite UHT Integral - 1L'},
     ]
 
     return(
