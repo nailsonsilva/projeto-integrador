@@ -3,7 +3,7 @@ import Sidebar from "../../components/shared/Sidebar";
 import Velocimetro from "../../components/velocimetro/Chart";
 import Calendario from "../../components/Calendario/Calendario";
 import { useAuth } from "../../context/AuthContext";
-import DayTip from "../../components/cards/DayTip";
+import DayTip from "../../components/Card/DayTip";
 import { Box, Flex, Grid, GridItem, Heading } from "@chakra-ui/react";
 import CardInfoEstoque from "../../components/CardInfoEstoque/CardInfoEstoque";
 
