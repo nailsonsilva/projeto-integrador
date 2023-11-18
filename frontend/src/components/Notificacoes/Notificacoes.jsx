@@ -10,11 +10,11 @@ import {
 const Notificacao = () => {
 
     const itens = [
-        {produto: 'teste', descricao: 'Lorem ipsum dolor sit amet consectetur adipisicing elit. Officiis soluta voluptas'},
-        {produto: 'teste', descricao: 'Lorem ipsum dolor sit amet consectetur adipisicing elit. Officiis soluta voluptas'},
-        {produto: 'teste', descricao: 'Lorem ipsum dolor sit amet consectetur adipisicing elit. Officiis soluta voluptas'},
-        {produto: 'teste', descricao: 'Lorem ipsum dolor sit amet consectetur adipisicing elit. Officiis soluta voluptas'},
-        {produto: 'teste', descricao: 'Lorem ipsum dolor sit amet consectetur adipisicing elit. Officiis soluta voluptas'},
+        {produto: 'Azeite Gallo', descricao: 'Lorem ipsum dolor sit amet consectetur adipisicing elit. Officiis soluta voluptas'},
+        {produto: 'Manteiga Ghee', descricao: 'Lorem ipsum dolor sit amet consectetur adipisicing elit. Officiis soluta voluptas'},
+        {produto: 'Arroz Camil', descricao: 'Lorem ipsum dolor sit amet consectetur adipisicing elit. Officiis soluta voluptas'},
+        {produto: 'Mel Puro', descricao: 'Lorem ipsum dolor sit amet consectetur adipisicing elit. Officiis soluta voluptas'},
+        {produto: 'Leite Uht Integral', descricao: 'Lorem ipsum dolor sit amet consectetur adipisicing elit. Officiis soluta voluptas'},
     ]
 
     return(
