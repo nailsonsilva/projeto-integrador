@@ -1,70 +1,80 @@
-# Getting Started with Create React App
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+<center>
 
-## Available Scripts
+# Projeto Integrador IV 
 
-In the project directory, you can run:
+</center>
 
-### `npm start`
+## Desenvolvimento de sistemas orientado a dispositivos móveis e baseados na Web
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
+---
+<center>
 
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
+###Integrantes
 
-### `npm test`
+</center>
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+* CAROLINA BORGES DE FARIAS
+* DEBORA ALMEIDA GONCALVES
+* DIEGO BATISTA PEREIRA
+* GABRIELA FACCIOLI SOUTO DA SILVA
+* KAROLINE BENIGNO BORGES
+* MARCIANO QUELHA MARINHEIRO JUNIOR
+* NAILSON AFONSO DA SILVA
+* PEDRO AMERICANO DO BRASIL
 
-### `npm run build`
+---
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+##Apresentação do projeto
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+O sistema estoquix é solução tecnológica de qualidade, que auxilia organizações de pequeno porte na gestão de seu estoque, evitando que haja disperdícios de recursos e erros operacionais / logísticos ao longo de seus processos de negócio.
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+As funcionalidades implementadas foram as seguintes:**cadastrar usuário**, **realizar login** e **fazer pedido**, sendo que o fluxo de uso foi baseado na jornada de usuário da persona - Gerente de restaurante. Esta persona, por meio da sugestão de compra do assistente virtual, realiza o pedido de compra de determinado produto para abastecer o estoque de seu estabelecimento. 
 
-### `npm run eject`
+ 
+### Tecnologias Utilizadas
 
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
+- [React.js](https://reactjs.org/)
+- [Node.js](https://nodejs.org/)
+- [MongoDB](https://www.mongodb.com/)
 
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
+### Configuração
 
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
+Antes de instalar e iniciar o projeto, siga estas etapas:
 
-## Learn More
+1. Copie a URL do repositório para fazer o clone. 
+2. Clone o repositório do projeto em um diretório local. Utilize o seguinte comando seguido da URL que foi copiada no passo anterior:
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
+```bash
 
-To learn React, check out the [React documentation](https://reactjs.org/).
+git clone 
 
-### Code Splitting
+```
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
+3. Crie um arquivo **.env** na raiz da pasta **"Backend"**.
+4. Adicione o arquivo **.env** ao arquivo **.gitignore**.
 
-### Analyzing the Bundle Size
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
+### Instalação 
 
-### Making a Progressive Web App
+siga as instruções a seguir para instalar e iniciar o projeto localmente:
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
 
-### Advanced Configuration
+```bash
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
+# Instale as dependências do projeto
+cd Backend
+npm install
 
-### Deployment
+# Inicie o servidor Node.js
+npm start
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
+# Em outra janela do terminal, inicie o cliente React.js
+cd Frontend
+npm install
+npm start
 
-### `npm run build` fails to minify
+```
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+---
