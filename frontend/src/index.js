@@ -7,6 +7,7 @@ import Login from "./pages/login/Login";
 import Dashboard from "./pages/dashboard/Dashboard";
 import AuthProvider from "./context/AuthContext";
 import ProtectedRoute from "./components/shared/ProtectedRoute";
+import Vendas from "./pages/vendas/Vendas";
 
 const { ToastContainer } = createStandaloneToast();
 
@@ -19,10 +20,18 @@ const router = createBrowserRouter([
     path: "/dashboard",
     element: (
       <ProtectedRoute>
-        <Dashboard />
+        <Vendas />
       </ProtectedRoute>
     ),
   },
+  // {
+  //   path: "/vendas",
+  //   element: (
+  //     <ProtectedRoute>
+  //       <Vendas />
+  //     </ProtectedRoute>
+  //   ),
+  // },
 ]);
 
 ReactDOM.createRoot(document.getElementById("root")).render(
