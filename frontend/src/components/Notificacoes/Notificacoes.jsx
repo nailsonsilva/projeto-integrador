@@ -1,15 +1,22 @@
-import { Table, Thead, Tbody, Tr, Th, Td } from "@chakra-ui/react";
+import { Table, Thead, Tbody, Tr, Th, Td, Flex, Button, Heading, Text } from "@chakra-ui/react";
+
+import arroz from "../../assets/arroz.png"
+import azeite from "../../assets/azeite.png"
+import leite from "../../assets/leite.png"
+import manteiga from "../../assets/manteiga.png"
+import mel from "../../assets/mel.png"
+
 
 const Notificacao = () => {
   const itens = [
     {
-      produto: "Azeite Gallo",
+      imagem: azeite, produto: "Azeite Gallo",
       descricao: "Azeite de Oliva Extra Virgem - Vidro 500ML",
     },
-    { produto: "Manteiga Ghee", descricao: "Manteiga Com Sal - 200G" },
-    { produto: "Arroz Camil", descricao: "Arroz Branco Agulha Tipo 1 - 1KG" },
-    { produto: "Mel Puro", descricao: "Mel das Abelhinhas - 450G" },
-    { produto: "Leite Uht Integral", descricao: "Leite UHT Integral - 1L" },
+    { imagem: manteiga, produto: "Manteiga Ghee", descricao: "Manteiga Com Sal - 200G" },
+    { imagem: arroz, produto: "Arroz Camil", descricao: "Arroz Branco Agulha Tipo 1 - 1KG" },
+    { imagem: mel, produto: "Mel Puro", descricao: "Mel das Abelhinhas - 450G" },
+    { imagem: leite, produto: "Leite Uht Integral", descricao: "Leite UHT Integral - 1L" },
   ];
 
   return (
@@ -25,6 +32,10 @@ const Notificacao = () => {
           <Tr borderBottom="1px solid #f7f7f7" key={index}>
             <Td w="50%" fontSize="14px">
               {item.produto}
+              <Flex alignItems="rigth">
+                <img src={item.imagem} alt="Imagem do produto" style={{ marginRight: '50px', width: '18px'}} />
+                 <Text fontWeight='600'>{item.produto}</Text>
+              </Flex>
             </Td>
             <Td w="50%" fontSize="14px">
               {item.descricao}
