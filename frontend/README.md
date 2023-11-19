@@ -10,7 +10,7 @@
 ---
 <center>
 
-###Integrantes
+### Integrantes
 
 </center>
 
@@ -25,7 +25,7 @@
 
 ---
 
-##Apresentação do projeto
+## Apresentação do projeto
 
 O sistema estoquix é solução tecnológica de qualidade, que auxilia organizações de pequeno porte na gestão de seu estoque, evitando que haja disperdícios de recursos e erros operacionais / logísticos ao longo de seus processos de negócio.
 
