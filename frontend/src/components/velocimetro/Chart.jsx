@@ -12,6 +12,7 @@ const PieChart = () => {
 
   const options = {
     title: 'Composição do estoque',
+    is3D: true,
   };
 
   return (
