@@ -7,7 +7,7 @@ import Login from "./pages/login/Login";
 import Dashboard from "./pages/dashboard/Dashboard";
 import AuthProvider from "./context/AuthContext";
 import ProtectedRoute from "./components/shared/ProtectedRoute";
-import Vendas from "./pages/vendas/Vendas";
+import Compras from "./pages/compras/Compras";
 
 const { ToastContainer } = createStandaloneToast();
 
@@ -25,10 +25,10 @@ const router = createBrowserRouter([
     ),
   },
   {
-    path: "/vendas",
+    path: "/compras",
     element: (
       <ProtectedRoute>
-        <Vendas />
+        <Compras />
       </ProtectedRoute>
     ),
   },

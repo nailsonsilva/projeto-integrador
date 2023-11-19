@@ -28,10 +28,13 @@ import {
 import { useAuth } from "../../context/AuthContext";
 import logo2 from "../../assets/logo2.png";
 
+const LinkItemsRedirect = [
+  { name: "Dashboard", icon: FiUser, path: "/dashboard" },
+  { name: "Compras", icon: FiFileText, path: "compras" },
+];
+
 const LinkItems = [
-  { name: "Principal", icon: FiUser },
-  { name: "Cadastros", icon: FiFolder },
-  { name: "Movimentação", icon: FiFileText },
+  { name: "Movimentação", icon: FiFolder },
   { name: "Inventário", icon: FiStar },
   { name: "Financeiro", icon: FiShoppingBag },
   { name: "Relatórios", icon: FiBookOpen },
@@ -41,7 +44,7 @@ const LinkItems = [
 export default function Sidebar({ children }) {
   const { isOpen, onOpen, onClose } = useDisclosure();
   return (
-    <Box w='100%'>
+    <Box w="100%">
       <SidebarContent
         onClose={() => onClose}
         display={{ base: "none", md: "block" }}
@@ -87,6 +90,16 @@ const SidebarContent = ({ onClose, ...rest }) => {
         />
       </Flex>
       <Box mt={5}>
+        {LinkItemsRedirect.map((link) => (
+          <NavItem
+            key={link.name}
+            icon={link.icon}
+            color="white"
+            path={link.path}
+          >
+            {link.name}
+          </NavItem>
+        ))}
         {LinkItems.map((link) => (
           <NavItem key={link.name} icon={link.icon} color="white">
             {link.name}
@@ -105,11 +118,11 @@ const SidebarContent = ({ onClose, ...rest }) => {
   );
 };
 
-const NavItem = ({ icon, children, ...rest }) => {
+const NavItem = ({ icon, children, path, ...rest }) => {
   return (
     <Box
       as="a"
-      href="#"
+      href={path}
       style={{ textDecoration: "none" }}
       _focus={{ boxShadow: "none" }}
     >
