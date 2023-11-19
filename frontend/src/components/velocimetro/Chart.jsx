@@ -7,10 +7,12 @@ const PieChart = () => {
     ["Produtos congelados", 20],
     ["Produtos perecíveis", 15],
     ["Bebidas", 10],
+    ["Produtos de Higiene", 9],
+    ["Produtos de Limpeza", 7],
   ];
 
   const options = {
-    title: "Composição do estoque",
+    title: "Composição do Estoque",
     is3D: true,
   };
 

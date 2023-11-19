@@ -17,7 +17,7 @@ const Notificacao = () => {
       <Thead>
         <Tr color="gray" backgroundColor="#F6F9FC" fontSize="20px">
           <Th fontSize="16px">Item</Th>
-          <Th fontSize="16px">Descricao</Th>
+          <Th fontSize="16px">Descrição</Th>
         </Tr>
       </Thead>
       <Tbody>
