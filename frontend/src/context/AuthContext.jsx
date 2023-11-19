@@ -8,7 +8,7 @@ import {
 const AuthContext = createContext({});
 
 const AuthProvider = ({ children }) => {
-  const [user, setUser] = useState(null);
+  const [user, setUser] = useState(localStorage.getItem("user") || null);
 
   const authFetch = axios.create({
     withCredentials: true,
@@ -28,12 +28,21 @@ const AuthProvider = ({ children }) => {
       performLogin(currentUser, endPoint)
         .then((res) => {
           setUser(res.data.user);
+          addToLocalStorage("user", res.data.user);
           resolve(res);
         })
         .catch((err) => {
           reject(err);
         });
     });
+  };
+
+  const addToLocalStorage = (key, value) => {
+    localStorage.setItem(key, value);
+  };
+
+  const removeFromLocalStorage = (key) => {
+    localStorage.removeItem(key);
   };
 
   const getCurrentUser = async () => {
@@ -53,15 +62,20 @@ const AuthProvider = ({ children }) => {
       await authFetch("/auth/logout");
       setUser(null);
       successNotification("Sucesso!", "Usuario deslogado!");
+      removeFromLocalStorage("user");
     } catch (err) {
       console.log(err);
       errorNotification(err.code, err.response.data.msg);
     }
   };
 
+  const isUserAuthenticated = () => {
+    return user ? true : false;
+  };
+
   useEffect(() => {
     getCurrentUser();
-  }, []);
+  });
 
   return (
     <AuthContext.Provider
@@ -69,6 +83,7 @@ const AuthProvider = ({ children }) => {
         user,
         setupUser,
         logoutUser,
+        isUserAuthenticated,
       }}
     >
       {children}

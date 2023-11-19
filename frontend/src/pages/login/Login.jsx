@@ -5,12 +5,10 @@ import {
   Button,
   Flex,
   FormLabel,
-  Heading,
   Image,
   Input,
   Stack,
   Text,
-  color,
 } from "@chakra-ui/react";
 import { Formik, Form, useField } from "formik";
 import * as Yup from "yup";
@@ -136,11 +134,11 @@ const LoginForm = () => {
 };
 
 const Login = () => {
-  const { user } = useAuth();
+  const { isUserAuthenticated } = useAuth();
   const navigate = useNavigate();
 
   useEffect(() => {
-    if (user) {
+    if (isUserAuthenticated()) {
       navigate("/dashboard");
     }
   });

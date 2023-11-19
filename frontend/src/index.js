@@ -20,18 +20,18 @@ const router = createBrowserRouter([
     path: "/dashboard",
     element: (
       <ProtectedRoute>
+        <Dashboard />
+      </ProtectedRoute>
+    ),
+  },
+  {
+    path: "/vendas",
+    element: (
+      <ProtectedRoute>
         <Vendas />
       </ProtectedRoute>
     ),
   },
-  // {
-  //   path: "/vendas",
-  //   element: (
-  //     <ProtectedRoute>
-  //       <Vendas />
-  //     </ProtectedRoute>
-  //   ),
-  // },
 ]);
 
 ReactDOM.createRoot(document.getElementById("root")).render(
