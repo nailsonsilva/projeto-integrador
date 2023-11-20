@@ -30,10 +30,9 @@ const Notificacao = () => {
       <Tbody>
         {itens.map((item, index) => (
           <Tr borderBottom="1px solid #f7f7f7" key={index}>
-            <Td w="50%" fontSize="14px">
-              {item.produto}
-              <Flex alignItems="rigth">
-                <img src={item.imagem} alt="Imagem do produto" style={{ marginRight: '50px', width: '18px'}} />
+            <Td w="50%" fontSize="16px">
+                   <Flex alignItems="Center">
+                <img src={item.imagem} alt="Imagem do produto" style={{ marginRight: '17px', width: '18px'}} />
                  <Text fontWeight='600'>{item.produto}</Text>
               </Flex>
             </Td>
