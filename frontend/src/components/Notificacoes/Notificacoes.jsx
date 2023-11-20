@@ -16,7 +16,7 @@ const Notificacao = () => {
     { imagem: manteiga, produto: "Manteiga Ghee", descricao: "Manteiga Com Sal - 200G" },
     { imagem: arroz, produto: "Arroz Camil", descricao: "Arroz Branco Agulha Tipo 1 - 1KG" },
     { imagem: mel, produto: "Mel Puro", descricao: "Mel das Abelhinhas - 450G" },
-    { imagem: leite, produto: "Leite Uht Integral", descricao: "Leite UHT Integral - 1L" },
+    { imagem: leite, produto: "Leite Integral Betânia", descricao: "Leite UHT Integral - 1L" },
   ];
 
   return (
