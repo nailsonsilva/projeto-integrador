@@ -27,11 +27,11 @@ const Vendas = () => {
     const [selectedProduct, setSelectedProduct] = useState(null);
     
     const produtos = [
-        {imagem: azeite, nome: 'Azeite Gallo', vendedor: 'Distribuidora Ferraz', quantidade_em_estoque: 5, preco: '40.00'},
-        {imagem: manteiga, nome: 'Manteiga Ghee', vendedor: 'Yamuna', quantidade_em_estoque: 10, preco: '44.00'},
-        {imagem: arroz, nome: 'Arroz Camil', vendedor: 'Premium LTDA', quantidade_em_estoque: 8, preco: '19.90'},
-        {imagem: mel, nome: 'Mel Puro', vendedor: 'Silvestre', quantidade_em_estoque: 3, preco: '19.90'},
-        {imagem: leite, nome: 'Leite Uht Integral', vendedor: 'Betânia', quantidade_em_estoque: 1, preco: '19.90'},
+        {imagem: azeite, nome: 'Azeite Gallo', vendedor: 'Distribuidora Ferraz', quantidade_em_estoque: 5, categoria: 'Produto Perecível', preco: '40.00'},
+        {imagem: manteiga, nome: 'Manteiga Ghee', vendedor: 'Yamuna', quantidade_em_estoque: 10,categoria: 'Produto Perecível', preco: '44.00'},
+        {imagem: arroz, nome: 'Arroz Camil', vendedor: 'Premium LTDA', quantidade_em_estoque: 8,categoria: 'Produto Perecível', preco: '19.90'},
+        {imagem: mel, nome: 'Mel Puro', vendedor: 'Silvestre', quantidade_em_estoque: 3,categoria: 'Produto Perecível', preco: '19.90'},
+        {imagem: leite, nome: 'Leite Uht Integral', vendedor: 'Betânia', quantidade_em_estoque: 1,categoria: 'Produto Perecível', preco: '19.90'},
     ]
 
     return(       
@@ -44,6 +44,7 @@ const Vendas = () => {
                             <Th fontSize='16px' colSpan=''>Produto</Th>
                             <Th fontSize='16px'>Vendedor</Th>
                             <Th fontSize='16px'>Quantidade em estoque</Th>
+                            <Th fontSize='16px'>Categoria</Th>
                             <Th fontSize='16px'>Preço</Th>
                         </Tr>
                     </Thead>
@@ -60,9 +61,10 @@ const Vendas = () => {
                                 <Td w='20%' fontSize='14px' color='red'>                                
                                     <p>{produto.quantidade_em_estoque}</p>
                                 </Td>
+                                <Td w='20%' fontSize='14px'>{produto.categoria}</Td>
                                 <Td w='20%' fontSize='14px' fontWeight='700'>R$ {produto.preco.replace('.', ',')} un</Td>                         
                                 <Td w='10%' fontSize='14px'>
-                                    <Button type={"button"} backgroundColor="#A3FFBF" width="32" borderRadius="24" onClick={() => {setOpenModal(true); setSelectedProduct(produto)}}>
+                                    <Button type={"button"} backgroundColor="#A3FFBF" width="22" borderRadius="24" onClick={() => {setOpenModal(true); setSelectedProduct(produto)}}>
                                         Comprar
                                     </Button>
                                 </Td>                   
