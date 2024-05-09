@@ -27,11 +27,11 @@ const Vendas = () => {
     const [selectedProduct, setSelectedProduct] = useState(null);
     
     const produtos = [
-        {imagem: azeite, nome: 'Azeite Gallo', vendedor: 'Distribuidora Ferraz', quantidade_em_estoque: 5, categoria: 'Produto Perecível', preco: '40.00'},
-        {imagem: manteiga, nome: 'Manteiga Ghee', vendedor: 'Yamuna', quantidade_em_estoque: 10,categoria: 'Produto Perecível', preco: '44.00'},
-        {imagem: arroz, nome: 'Arroz Camil', vendedor: 'Premium LTDA', quantidade_em_estoque: 8,categoria: 'Produto Perecível', preco: '19.90'},
-        {imagem: mel, nome: 'Mel Puro', vendedor: 'Silvestre', quantidade_em_estoque: 3,categoria: 'Produto Perecível', preco: '19.90'},
-        {imagem: leite, nome: 'Leite Uht Integral', vendedor: 'Betânia', quantidade_em_estoque: 1,categoria: 'Produto Perecível', preco: '19.90'},
+        {imagem: azeite, nome: 'Azeite Gallo', vendedor: 'Distribuidora Ferraz', quantidade_em_estoque: 5, categoria: 'Produtos Perecíveis', preco: '40.00'},
+        {imagem: manteiga, nome: 'Manteiga Ghee', vendedor: 'Yamuna', quantidade_em_estoque: 10,categoria: 'Produtos Perecíveis', preco: '44.00'},
+        {imagem: arroz, nome: 'Arroz Camil', vendedor: 'Premium LTDA', quantidade_em_estoque: 8,categoria: 'Produtos Perecíveis', preco: '19.90'},
+        {imagem: mel, nome: 'Mel Puro', vendedor: 'Silvestre', quantidade_em_estoque: 3,categoria: 'Produtos Perecíveis', preco: '19.90'},
+        {imagem: leite, nome: 'Leite Uht Integral', vendedor: 'Betânia', quantidade_em_estoque: 1,categoria: 'Produtos Perecíveis', preco: '19.90'},
     ]
 
     return(       
