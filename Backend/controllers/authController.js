@@ -27,6 +27,8 @@ const register = async (req, res) => {
     tipo = "cliente";
   } else if (documento.length === 14) {
     tipo = "fornecedor";
+  } else {
+    throw new BadRequestError("Documento deve ter 11 ou 14 dígitos.");
   }
 
   const user = await User.create({ nome, documento, senha, tipo }); // cria a entidade no banco de dados
