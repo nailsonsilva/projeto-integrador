@@ -7,6 +7,8 @@ import cookieParser from "cookie-parser";
 import "express-async-errors";
 import cors from "cors";
 import connectDB from "./db/connectDB.js";
+import swaggerUI from "swagger-ui-express";
+import swaggerSpec from "./swaggerConfig.js";
 
 // middlewares
 import notFoundMiddleware from "./middleware/not-found.js";
@@ -14,6 +16,8 @@ import errorHandlerMiddleware from "./middleware/error-handler.js";
 
 // routers
 import authRouter from "./routes/authRoutes.js";
+import productRouter from "./routes/productRoutes.js";
+import movementRouter from "./routes/movementRoutes.js";
 
 if (process.env.NODE_ENV !== "production") {
   app.use(morgan("dev"));
@@ -26,9 +30,13 @@ const corsOptions = {
   optionsSuccessStatus: 200,
 };
 
+app.use("/api-docs", swaggerUI.serve, swaggerUI.setup(swaggerSpec));
+
 app.use(cors(corsOptions));
 
-app.use("/api/v1/auth", authRouter); // define o endpoint basico para a autenticacao
+app.use("/api/v1/auth", authRouter);
+app.use("/api/v1/products", productRouter);
+app.use("/api/v1/movements", movementRouter);
 
 app.use(notFoundMiddleware);
 app.use(errorHandlerMiddleware);

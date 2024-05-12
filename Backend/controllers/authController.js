@@ -8,14 +8,28 @@ import {
 } from "../errors/index.js";
 
 const register = async (req, res) => {
-  const { nome, email, senha } = req.body; // recebe as propriedades do corpo da requisiçao
+  const { nome, documento, senha } = req.body; // recebe as propriedades do corpo da requisiçao
 
-  if (!nome || !email || !senha) {
+  if (!nome || !documento || !senha) {
     // se alguma propriedade esta faltando, retorna um erro
     throw new BadRequestError("Forneça todos os campos obrigatórios!");
   }
 
-  const user = await User.create({ nome, email, senha }); // cria a entidade no banco de dados
+  const existingUser = await User.findOne({ documento });
+  if (existingUser) {
+    throw new BadRequestError(
+      "Já existe um usuário com esse documento cadastrado!"
+    );
+  }
+
+  let tipo;
+  if (documento.length === 11) {
+    tipo = "cliente";
+  } else if (documento.length === 14) {
+    tipo = "fornecedor";
+  }
+
+  const user = await User.create({ nome, documento, senha, tipo }); // cria a entidade no banco de dados
 
   const tokenUser = createTokenUser(user);
 
@@ -25,12 +39,12 @@ const register = async (req, res) => {
 };
 
 const login = async (req, res) => {
-  const { email, senha } = req.body;
-  if (!email || !senha) {
+  const { documento, senha } = req.body;
+  if (!documento || !senha) {
     throw new BadRequestError("Forneça todos os campos obrigatórios!");
   }
 
-  const user = await User.findOne({ email });
+  const user = await User.findOne({ documento });
   if (!user) {
     throw new NotFoundError("Credenciais inválidas!");
   }

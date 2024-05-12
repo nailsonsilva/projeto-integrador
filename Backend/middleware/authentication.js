@@ -11,8 +11,8 @@ const authenticateUser = async (req, res, next) => {
 
   try {
     const payload = isTokenValid({ token }); // checa se o token é valido e retorna o conteudo do token
-    const { nome, userId } = payload.payload;
-    req.user = { nome, userId }; // adiciona o user a requisiçao
+    const { nome, userId, tipo } = payload.payload;
+    req.user = { nome, userId, tipo }; // adiciona o user a requisiçao
     next(); // retorna, passando a requisiçao com o usuario para as funçoes posteriores
   } catch (error) {
     // se o token não for válido, retorna erro

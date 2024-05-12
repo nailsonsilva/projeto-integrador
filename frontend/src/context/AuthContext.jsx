@@ -73,10 +73,6 @@ const AuthProvider = ({ children }) => {
     return user ? true : false;
   };
 
-  useEffect(() => {
-    getCurrentUser();
-  });
-
   return (
     <AuthContext.Provider
       value={{

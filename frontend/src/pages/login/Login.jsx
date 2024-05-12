@@ -46,9 +46,10 @@ const LoginForm = () => {
     <Formik
       validateOnMount={true}
       validationSchema={Yup.object({
-        email: Yup.string()
-          .email("Deve ser um email válido")
-          .required("Email é um campo obrigatório"),
+        documento: Yup.string()
+          .required("Documento é um campo obrigatório")
+          .min(11, "Documento deve conter no mínimo 11 caracteres")
+          .required("Documento é um campo obrigatório"),
         senha: Yup.string()
           .min(6, "Senha deve conter no mínimo 6 caracteres")
           .required("Senha é um campo obrigatório"),
@@ -58,7 +59,7 @@ const LoginForm = () => {
               .min(3, "Nome deve conter no mínimo 3 caracteres")
               .required("Nome é um campo obrigatório"),
       })}
-      initialValues={{ nome: "", senha: "", email: "" }}
+      initialValues={{ nome: "", senha: "", documento: "" }}
       onSubmit={(values, { setSubmitting }) => {
         setSubmitting(true);
         if (isMember) {
@@ -97,10 +98,10 @@ const LoginForm = () => {
         <Form>
           <Stack mt={15} spacing={15}>
             <MyTextInput
-              label={"Email"}
-              name={"email"}
-              type={"email"}
-              placeholder={"email@email.com"}
+              label={"Documento"}
+              name={"documento"}
+              type={"text"}
+              placeholder={"11122233344"}
             />
             <MyTextInput
               label={"Senha"}

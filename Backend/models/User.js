@@ -10,19 +10,19 @@ const UserSchema = new mongoose.Schema({
     minlength: 3,
     maxlength: 50,
   },
-  email: {
+  documento: {
     type: String,
-    unique: true,
-    required: [true, "Email é um campo obrigatório"],
-    validate: {
-      validator: validator.isEmail,
-      message: "Forneça um email válido",
-    },
+    minlength: 11,
   },
   senha: {
     type: String,
     required: [true, "Senha é um campo obrigatório"],
     minlength: 6,
+  },
+  tipo: {
+    type: String,
+    enum: ["fornecedor", "cliente"],
+    required: [true, "Tipo é um campo obrigatório"],
   },
 });
 
