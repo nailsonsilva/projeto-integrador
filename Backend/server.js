@@ -7,8 +7,8 @@ import cookieParser from "cookie-parser";
 import "express-async-errors";
 import cors from "cors";
 import connectDB from "./db/connectDB.js";
-import swaggerUI from "swagger-ui-express";
-import swaggerSpec from "./swaggerConfig.js";
+import swaggerUi from "swagger-ui-express";
+import swaggerFile from "./swagger_output.json" assert { type: "json" };
 
 // middlewares
 import notFoundMiddleware from "./middleware/not-found.js";
@@ -24,19 +24,20 @@ if (process.env.NODE_ENV !== "production") {
 }
 app.use(express.json());
 app.use(cookieParser(process.env.JWT_SECRET));
+
 const corsOptions = {
   origin: "http://localhost:3000",
   credentials: true,
   optionsSuccessStatus: 200,
 };
 
-app.use("/api-docs", swaggerUI.serve, swaggerUI.setup(swaggerSpec));
-
 app.use(cors(corsOptions));
 
-app.use("/api/v1/auth", authRouter);
-app.use("/api/v1/products", productRouter);
-app.use("/api/v1/movements", movementRouter);
+app.use(authRouter);
+app.use(productRouter);
+app.use(movementRouter);
+
+app.use("/doc", swaggerUi.serve, swaggerUi.setup(swaggerFile));
 
 app.use(notFoundMiddleware);
 app.use(errorHandlerMiddleware);

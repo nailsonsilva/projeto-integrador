@@ -1,9 +1,11 @@
 {
   "type": "module",
   "scripts": {
-    "start": "nodemon server"
+    "start": "nodemon server",
+    "swagger-autogen": "node swagger.js"
   },
   "dependencies": {
+    "and": "^0.0.3",
     "bcrypt": "^5.1.1",
     "bcryptjs": "^2.4.3",
     "cookie-parser": "^1.4.6",
@@ -16,6 +18,8 @@
     "mongoose": "^7.6.5",
     "morgan": "^1.10.0",
     "nodemon": "^3.0.1",
+    "swagger-autogen": "^2.23.7",
+    "swagger-ui-express": "^5.0.0",
     "validator": "^13.11.0"
   }
 }
