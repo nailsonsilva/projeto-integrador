@@ -19,20 +19,18 @@ import azeite from "../../assets/azeite.png"
 import leite from "../../assets/leite.png"
 import manteiga from "../../assets/manteiga.png"
 import mel from "../../assets/mel.png"
+import { getProducts } from "../../services/products";
 
 
 const Vendas = () => {
     
     const [openModal, setOpenModal] = useState(false);
     const [selectedProduct, setSelectedProduct] = useState(null);
+    const [produtos, setProdutos] = useState([])
     
-    const produtos = [
-        {imagem: azeite, nome: 'Azeite Gallo', vendedor: 'Distribuidora Ferraz', quantidade_em_estoque: 5, categoria: 'Produtos Perecíveis', preco: '40.00'},
-        {imagem: manteiga, nome: 'Manteiga Ghee', vendedor: 'Yamuna', quantidade_em_estoque: 10,categoria: 'Produtos Perecíveis', preco: '44.00'},
-        {imagem: arroz, nome: 'Arroz Camil', vendedor: 'Premium LTDA', quantidade_em_estoque: 8,categoria: 'Produtos Perecíveis', preco: '19.90'},
-        {imagem: mel, nome: 'Mel Puro', vendedor: 'Silvestre', quantidade_em_estoque: 3,categoria: 'Produtos Perecíveis', preco: '19.90'},
-        {imagem: leite, nome: 'Leite Uht Integral', vendedor: 'Betânia', quantidade_em_estoque: 1,categoria: 'Produtos Perecíveis', preco: '19.90'},
-    ]
+    getProducts().then (res =>{
+        setProdutos(res)
+    });
 
     return(       
         <Sidebar>
@@ -59,10 +57,10 @@ const Vendas = () => {
                                 </Td>
                                 <Td w='20%' fontSize='14px'>{produto.vendedor}</Td>
                                 <Td w='20%' fontSize='14px' color='red'>                                
-                                    <p>{produto.quantidade_em_estoque}</p>
+                                    <p>{produto.quantidade}</p>
                                 </Td>
-                                <Td w='20%' fontSize='14px'>{produto.categoria}</Td>
-                                <Td w='20%' fontSize='14px' fontWeight='700'>R$ {produto.preco.replace('.', ',')} un</Td>                         
+                                <Td w='20%' fontSize='14px'>{produto.tipo}</Td>
+                                {/* <Td w='20%' fontSize='14px' fontWeight='700'>R$ {produto.preco.replace('.', ',')} un</Td>                          */}
                                 <Td w='10%' fontSize='14px'>
                                     <Button type={"button"} backgroundColor="#A3FFBF" width="22" borderRadius="24" onClick={() => {setOpenModal(true); setSelectedProduct(produto)}}>
                                         Comprar
