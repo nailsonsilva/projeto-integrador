@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import Modal from "../../components/Modal/Modal";
 import Sidebar from "../../components/shared/Sidebar";
 import {
@@ -28,9 +28,13 @@ const Vendas = () => {
     const [selectedProduct, setSelectedProduct] = useState(null);
     const [produtos, setProdutos] = useState([])
     
-    getProducts().then (res =>{
+    useEffect( () => {
+        getProducts().then (res =>{
         setProdutos(res)
-    });
+       }); 
+    })
+    
+    
 
     return(       
         <Sidebar>
@@ -60,7 +64,7 @@ const Vendas = () => {
                                     <p>{produto.quantidade}</p>
                                 </Td>
                                 <Td w='20%' fontSize='14px'>{produto.tipo}</Td>
-                                {/* <Td w='20%' fontSize='14px' fontWeight='700'>R$ {produto.preco.replace('.', ',')} un</Td>                          */}
+                                <Td w='20%' fontSize='14px' fontWeight='700'>R$ {produto.preco} un</Td>                         
                                 <Td w='10%' fontSize='14px'>
                                     <Button type={"button"} backgroundColor="#A3FFBF" width="22" borderRadius="24" onClick={() => {setOpenModal(true); setSelectedProduct(produto)}}>
                                         Comprar
