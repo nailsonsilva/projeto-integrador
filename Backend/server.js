@@ -18,11 +18,13 @@ import errorHandlerMiddleware from "./middleware/error-handler.js";
 import authRouter from "./routes/authRoutes.js";
 import productRouter from "./routes/productRoutes.js";
 import movementRouter from "./routes/movementRoutes.js";
+import fileUpload from "express-fileupload";
 
 if (process.env.NODE_ENV !== "production") {
   app.use(morgan("dev"));
 }
 app.use(express.json());
+app.use(fileUpload({ useTempFiles: true }));
 app.use(cookieParser(process.env.JWT_SECRET));
 
 const corsOptions = {

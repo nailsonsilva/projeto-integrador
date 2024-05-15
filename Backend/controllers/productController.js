@@ -7,6 +7,10 @@ import {
   UnauthorizedError,
 } from "../errors/index.js";
 import checkPermissions from "../utils/checkPermissions.js";
+import path from "path";
+import fs from "fs";
+import { fileURLToPath } from "url";
+import { dirname } from "path";
 
 const supplier = "fornecedor";
 const client = "cliente";
@@ -156,6 +160,55 @@ const getProductCountByCategory = async (req, res) => {
   res.status(StatusCodes.OK).json({ contagem });
 };
 
+const uploadProductImageLocal = async (req, res) => {
+  checkPermissions(req.user, supplier);
+
+  const { id: productId } = req.params;
+
+  const product = await Product.findOne({ _id: productId });
+
+  if (!product) {
+    throw new NotFoundError(`Nenhum produto com id: ${productId}`);
+  }
+
+  if (!req.files) {
+    throw new BadRequestError("Nenhum arquivo encontrado na requisição!");
+  }
+  const productImage = req.files.imagem;
+
+  if (!productImage.mimetype.startsWith("image")) {
+    throw new BadRequestError("Por favor forneça uma imagem");
+  }
+
+  const maxSize = 1024 * 1024 * 5;
+
+  if (productImage.size > maxSize) {
+    throw new CustomError.BadRequestError("A imagem deve ter no máximo 5MB ");
+  }
+
+  const __filename = fileURLToPath(import.meta.url);
+  const __dirname = dirname(__filename);
+
+  const imagePath = path.join(
+    __dirname,
+    "../../frontend/src/public/uploads/" + `${productImage.name}`
+  );
+
+  await Product.findOneAndUpdate(
+    { _id: productId },
+    { imagem: productImage.name },
+    {
+      new: true,
+      runValidators: true,
+    }
+  );
+
+  await productImage.mv(imagePath);
+  return res
+    .status(StatusCodes.OK)
+    .json({ image: { src: `/uploads/${productImage.name}` } });
+};
+
 export {
   createProduct,
   getProductById,
@@ -163,4 +216,5 @@ export {
   updateProduct,
   deleteProduct,
   getProductCountByCategory,
+  uploadProductImageLocal,
 };
