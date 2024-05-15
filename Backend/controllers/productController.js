@@ -148,10 +148,19 @@ const createMovement = async (product, type, quantity, price) => {
   await Movement.create(movimentationData);
 };
 
+const getProductCountByCategory = async (req, res) => {
+  const contagem = await Product.aggregate([
+    { $group: { _id: "$tipo", quantidade: { $sum: "$quantidade" } } },
+    { $project: { tipo: "$_id", quantidade: 1, _id: 0 } },
+  ]);
+  res.status(StatusCodes.OK).json({ contagem });
+};
+
 export {
   createProduct,
   getProductById,
   getProducts,
   updateProduct,
   deleteProduct,
+  getProductCountByCategory,
 };
