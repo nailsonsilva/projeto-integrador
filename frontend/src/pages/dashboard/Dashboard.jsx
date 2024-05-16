@@ -51,7 +51,11 @@ const Dashboard = () => {
           <Notificacao />
         </Flex>
         <Flex mt="20" w="20%">
-          <DayTip />
+          <DayTip
+            title={"Sugestão do dia!"}
+            fornecedor={"Fornecedor: Fernando"}
+            mensagem={"Arroz Branco Tipo I Vasconcelos - R$ 18,90"}
+          />
         </Flex>
       </Flex>
     </Sidebar>

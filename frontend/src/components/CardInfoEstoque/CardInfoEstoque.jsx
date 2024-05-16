@@ -5,11 +5,12 @@ const CardInfoEstoque = (props) => {
   return (
     <Box
       borderRadius="20"
-      w="241px"
+      w="300px"
       border="4px solid #468B97"
       textAlign="center"
       p="5"
       mb="2"
+      mr="2"
     >
       <Text color="#474646" fontSize="21px" fontWeight="600" mb="2">
         {props.info}

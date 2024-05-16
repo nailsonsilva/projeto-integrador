@@ -1,7 +1,7 @@
 import React from "react";
 import { useNavigate } from "react-router-dom";
 
-const DayTip = () => {
+const DayTip = ({title, fornecedor, mensagem}) => {
   const navigate = useNavigate();
 
   const handleButton = () => {
@@ -17,11 +17,11 @@ const DayTip = () => {
             fill="black"
           />
         </svg>
-        <p style={styles.textBold}>Sugestão do Dia!</p>
+        <p style={styles.textBold}>{title}</p>
       </div>
-      <p style={styles.textGreen}>Fornecedor: {"Fernando"}.</p>
+      {fornecedor && (<p style={styles.textGreen}>{fornecedor}</p>)}
       <p style={styles.textBold}>
-        {"Arroz Branco Tipo I Vasconcelos - R$18,00"}.
+        {mensagem}.
       </p>
       <button style={styles.button} onClick={handleButton}>
         Comprar
@@ -43,9 +43,8 @@ const styles = {
     border: "3px #eaeaea solid",
   },
   svg: {
-    width: "49",
-    height: "51",
-    viewBox: "0 0 49 51",
+    width: "80px",
+    height: "60px",
     fill: "none",
   },
   button: {
@@ -57,17 +56,18 @@ const styles = {
     marginTop: "10px",
   },
   textBold: {
-    marginTop: "10px",
+    marginTop: "",
     textAlign: "center",
     fontWeight: "bold",
   },
   textGreen: {
-    marginTop: "10px",
+    marginBottom: "10px",
     textAlign: "center",
     color: "#8EAC50",
   },
   robo: {
     display: "flex",
+    margin: "10px 0px"
   },
 };
 
