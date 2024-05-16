@@ -38,7 +38,7 @@ const AuthProvider = ({ children }) => {
   };
 
   const addToLocalStorage = (key, value) => {
-    localStorage.setItem(key, value);
+    localStorage.setItem(key, JSON.stringify(value));
   };
 
   const removeFromLocalStorage = (key) => {
