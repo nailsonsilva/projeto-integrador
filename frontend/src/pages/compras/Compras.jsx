@@ -14,13 +14,7 @@ import {
     Text
   } from '@chakra-ui/react'
 
-import arroz from "../../assets/arroz.png"
-import azeite from "../../assets/azeite.png"
-import leite from "../../assets/leite.png"
-import manteiga from "../../assets/manteiga.png"
-import mel from "../../assets/mel.png"
 import { getProducts } from "../../services/products";
-
 
 const Vendas = () => {
     
@@ -32,10 +26,13 @@ const Vendas = () => {
         getProducts().then (res =>{
         setProdutos(res)
        }); 
-    })
-    
-    
+    }, setProdutos);
 
+    const getImagePath = (imageName) => {
+        if (imageName)
+        return require(`../../public/uploads/${imageName}`);
+    };
+    
     return(       
         <Sidebar>
             <Heading pl='10' mt='5' mb='10' fontSize='27px'>Produtos em promoção</Heading>
@@ -55,7 +52,7 @@ const Vendas = () => {
                             <Tr borderBottom='1px solid #f7f7f7'>                        
                                 <Td w='30%' fontSize='14px'>
                                     <Flex alignItems="center">
-                                        <img src={produto.imagem} alt="Imagem do produto" style={{ marginRight: '10px', width: '40px'}} />
+                                        <img src={getImagePath(produto.imagem)} alt="Imagem do produto" style={{ marginRight: '10px', width: '150px'}} />
                                         <Text fontWeight='600'>{produto.nome}</Text>
                                     </Flex>
                                 </Td>

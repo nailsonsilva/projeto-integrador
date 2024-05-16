@@ -19,6 +19,9 @@ const ProductSchema = new mongoose.Schema({
     type: String,
     required: [true, "Vendedor é um campo obrigatório"],
   },
+  imagem: {
+    type: String,
+  },
   preco: {
     type: Number,
     required: [true, "Preço é um campo obrigatório"],
@@ -27,7 +30,7 @@ const ProductSchema = new mongoose.Schema({
   quantidade: {
     type: Number,
     required: [true, "Quantidade é um campo obrigatório"],
-    min: [1, "Quantidade deve ser no mínimo 1"],
+    min: [0, "Quantidade deve ser no mínimo 0"],
   },
 });
 

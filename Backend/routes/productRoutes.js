@@ -8,6 +8,7 @@ import {
   updateProduct,
   deleteProduct,
   getProductCountByCategory,
+  uploadProductImageLocal,
 } from "../controllers/productController.js";
 import { authenticateUser } from "../middleware/authentication.js";
 
@@ -18,6 +19,9 @@ router
 router
   .route("/api/v1/products/category")
   .get(authenticateUser, getProductCountByCategory);
+router
+  .route("/api/v1/products/uploads/:id")
+  .post(authenticateUser, uploadProductImageLocal);
 router
   .route("/api/v1/products/:id")
   .get(authenticateUser, getProductById)
