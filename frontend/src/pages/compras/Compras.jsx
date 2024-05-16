@@ -14,13 +14,7 @@ import {
     Text
   } from '@chakra-ui/react'
 
-import arroz from "../../assets/arroz.png"
-import azeite from "../../assets/azeite.png"
-import leite from "../../assets/leite.png"
-import manteiga from "../../assets/manteiga.png"
-import mel from "../../assets/mel.png"
 import { getProducts } from "../../services/products";
-
 
 const Vendas = () => {
     
@@ -32,10 +26,8 @@ const Vendas = () => {
         getProducts().then (res =>{
         setProdutos(res)
        }); 
-    })
+    }, setProdutos);
     
-    
-
     return(       
         <Sidebar>
             <Heading pl='10' mt='5' mb='10' fontSize='27px'>Produtos em promoção</Heading>
