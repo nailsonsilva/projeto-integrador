@@ -30,7 +30,7 @@ const ProductSchema = new mongoose.Schema({
   quantidade: {
     type: Number,
     required: [true, "Quantidade é um campo obrigatório"],
-    min: [1, "Quantidade deve ser no mínimo 1"],
+    min: [0, "Quantidade deve ser no mínimo 0"],
   },
 });
 

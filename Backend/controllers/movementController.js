@@ -1,5 +1,8 @@
 import Movement from "../models/Movement.js";
 import { StatusCodes } from "http-status-codes";
+import Product from "../models/Product.js";
+import BadRequestError from "../errors/bad-request.js";
+import mongoose from "mongoose";
 
 const getMovements = async (req, res) => {
   let result = Movement.find();
@@ -15,6 +18,88 @@ const getMovementsDetails = async (req, res) => {
   const movements = await result;
 
   res.status(StatusCodes.OK).json({ movements });
+};
+
+const getMovementsByCurrentUser = async (req, res) => {
+  let result = Movement.find({ userId: req.user.userId }).populate("produto");
+
+  const movements = await result;
+
+  res.status(StatusCodes.OK).json({ movements });
+};
+
+const createOrUpdateMovement = async (req, res) => {
+  const { quantidade: movementQuantity, productId } = req.body;
+  const userId = req.user.userId;
+
+  const session = await mongoose.startSession();
+  session.startTransaction();
+
+  const currentUTCDate = new Date();
+  currentUTCDate.setUTCHours(currentUTCDate.getUTCHours() - 3);
+  const utcTimestamp = currentUTCDate.getTime();
+
+  try {
+    const product = await Product.findOne({ _id: productId }).session(session);
+
+    let movement = await Movement.findOne({ produto: productId }).session(
+      session
+    );
+
+    if (!movement) {
+      if (product.quantidade < movementQuantity) {
+        throw new BadRequestError("Estoque insuficiente.");
+      }
+
+      const movimentationData = {
+        produto: productId,
+        quantidade: movementQuantity,
+        userId: userId,
+        data: new Date(utcTimestamp),
+      };
+
+      const newQuantity = product.quantidade - movementQuantity;
+      await Product.findOneAndUpdate(
+        { _id: productId },
+        { quantidade: newQuantity },
+        { new: true, runValidators: true, session: session }
+      );
+
+      movement = await Movement.create([movimentationData], {
+        session: session,
+      });
+    } else {
+      if (movementQuantity > movement.quantidade) {
+        const difference = movementQuantity - movement.quantidade;
+        const newQuantity = product.quantidade - difference;
+
+        if (newQuantity < 0) {
+          throw new BadRequestError("Estoque insuficiente.");
+        }
+
+        await Product.findOneAndUpdate(
+          { _id: productId },
+          { quantidade: newQuantity },
+          { new: true, runValidators: true, session: session }
+        );
+      }
+
+      movement = await Movement.findOneAndUpdate(
+        { _id: movement._id },
+        { quantidade: movementQuantity },
+        { new: true, runValidators: true, session: session }
+      );
+    }
+
+    await session.commitTransaction();
+    session.endSession();
+
+    return res.json(movement);
+  } catch (error) {
+    await session.abortTransaction();
+    session.endSession();
+    res.status(500).json({ error: error.message });
+  }
 };
 
 const getTotalQuantityByTypeAndMonth = async (req, res) => {
@@ -116,4 +201,10 @@ const getTotalQuantityByTypeAndMonth = async (req, res) => {
   res.status(StatusCodes.OK).json(jsonResponse);
 };
 
-export { getMovements, getTotalQuantityByTypeAndMonth, getMovementsDetails };
+export {
+  getMovements,
+  getTotalQuantityByTypeAndMonth,
+  getMovementsDetails,
+  getMovementsByCurrentUser,
+  createOrUpdateMovement,
+};
