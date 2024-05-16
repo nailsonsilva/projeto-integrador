@@ -38,5 +38,21 @@ async function createProduct(product) {
     });
 }
 
+async function addImage(file, productId){
+  var form = new FormData();
 
-export { getProducts, getCategories, updateProduct, createProduct }
+  form.append('imagem', file);
+
+  return await productsFetch.post(`/products/uploads/${productId}`, form, {
+      headers: {
+        "Content-Type": "multipart/form-data",
+      },
+    }).then(res => {
+      return res;
+    })
+    .catch((err) => {
+      return Promise.reject(err);
+    });
+}
+
+export { getProducts, getCategories, updateProduct, createProduct, addImage }

@@ -2,7 +2,7 @@ import { Button, CloseButton } from '@chakra-ui/react'
 import React from 'react'
 import { useState, useRef } from 'react';
 import { errorNotification, successNotification } from '../../services/notification';
-import { createProduct } from '../../services/products';
+import { addImage, createProduct } from '../../services/products';
 
 export default function CriarProduto({ isOpen, setModalOpen }) {
     const categorias = ["", "Limpeza", "Alimentos", "Higiene", "Bebida"];
@@ -39,7 +39,7 @@ export default function CriarProduto({ isOpen, setModalOpen }) {
         setFile(e.dataTransfer.files[0]);
         setProduct({
             ...product,
-            imagem: e.dataTransfer.files[0]
+            imagem: e.dataTransfer.files[0].name
         })
     }
     const handleDragOver = (e) => {
@@ -61,6 +61,7 @@ export default function CriarProduto({ isOpen, setModalOpen }) {
 
         createProduct(product).then(response => {
             if (response) {
+                addImage(file, response.data._id);
                 setModalOpen(!isOpen)
                 successNotification("Sucesso", "Produto cadastrado com sucesso")
             }
