@@ -5,6 +5,8 @@ import { FaRegMinusSquare } from "react-icons/fa";
 import { CloseButton } from '@chakra-ui/react'
 import { useState } from 'react';
 import Pedido from '../Pedido/Pedido';
+import { updateProduct } from '../../services/products';
+import { errorNotification } from '../../services/notification';
 
 export default function Modal({isOpen, children, setModalOpen, productSelected}) {
 
@@ -19,6 +21,23 @@ export default function Modal({isOpen, children, setModalOpen, productSelected})
         if (quantidade > 1) {
         setQuantidade(quantidade - 1);
         }
+    };
+
+    const handleSubmit = () => {
+        const params = {
+            nome: productSelected.nome,
+            tipo: productSelected.tipo,
+            quantidade: productSelected.quantidade - quantidade,
+            preco: productSelected.preco,
+            descricao: productSelected.descricao,
+            vendedor: productSelected.vendedor
+        }
+
+        updateProduct(params, productSelected._id).then(response => {
+            setOpenModalSucess(true);
+        }, error => {        
+            errorNotification(error.code, error.response.data.msg);
+        });
     };
 
     const precoTotal = productSelected ? quantidade * parseFloat(productSelected.preco) : 0;
@@ -50,7 +69,7 @@ export default function Modal({isOpen, children, setModalOpen, productSelected})
                                     <span style={{color: '#8EAC50', fontSize: '34px', fontWeight:'500'}}>R$ {precoTotal.toFixed(2).replace('.', ',')}</span>
                                 </div>
                             </div>                         
-                            <Button style={{marginTop: '40px', backgroundColor:"#A3FFBF"}} onClick={() => {setOpenModalSucess(true);}}>Confirmar</Button>
+                            <Button style={{ marginTop: '40px', backgroundColor: "#A3FFBF" }} onClick={() => {handleSubmit();}}>Confirmar</Button>
                         </div>
                     </div>
                 </div>
