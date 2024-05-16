@@ -28,4 +28,15 @@ async function getCategories () {
     });
 }
 
-export { getProducts, getCategories, updateProduct }
+async function createProduct(product) {
+  return await productsFetch.post(`/products/`, product)
+    .then((res) => {
+      return res;
+    })
+    .catch((err) => {
+      return Promise.reject(err);
+    });
+}
+
+
+export { getProducts, getCategories, updateProduct, createProduct }
