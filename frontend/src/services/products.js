@@ -13,5 +13,11 @@ async function getProducts () {
       });
 }
 
+async function getCategories () {
+  return await productsFetch.get('/products/category/')
+  .then(res => {
+          return res.data.contagem;
+    });
+}
 
-export {getProducts}
+export {getProducts, getCategories}
