@@ -1,16 +1,16 @@
 <center>
 
-# Projeto Integrador IV
+# Projeto Integrador V
 
 </center>
 
-## Desenvolvimento de sistemas orientado a dispositivos móveis e baseados na Web
+## Análise de Soluções Integradas para Organizações
 
 ---
 
 <center>
 
-### Integrantes - Grupo 20
+### Integrantes - Grupo 38
 
 </center>
 
@@ -30,7 +30,7 @@
 
 O sistema estoquix é solução tecnológica de qualidade, que auxilia organizações de pequeno porte na gestão de seu estoque, evitando que haja disperdícios de recursos e erros operacionais / logísticos ao longo de seus processos de negócio.
 
-As funcionalidades implementadas foram as seguintes:**cadastrar usuário**, **realizar login** e **fazer pedido**, sendo que o fluxo de uso foi baseado na jornada de usuário da persona - Gerente de restaurante. Esta persona, por meio da sugestão de compra do assistente virtual, realiza o pedido de compra de determinado produto para abastecer o estoque de seu estabelecimento.
+As funcionalidades implementadas foram as seguintes:**cadastrar usuário**, **realizar login**, **fazer pedido**, **cadastrar produto**, **Gráfico dinâmico do estoque**, sendo que o fluxo de uso da aplicação foi baseado na jornada de usuário das personas: Gerente de restaurante, Auxiliar de compras e representante de vendas.
 
 ### Tecnologias Utilizadas
 
@@ -53,10 +53,10 @@ git clone
 
 3. Crie um arquivo **.env** na raiz da pasta **"Backend"**.
 4. Adicione as seguintes propriedades no arquivo ".env":
-   1. MONGO_URI={URL DE CONEXÃO AO MONGODB}
-   2. JWT_SECRET={CHAVE SECRETA PARA ASSINAR O TOKEN}
-   3. JWT_LIFETIME={TEMPO DE EXPIRAÇÃO DO TOKEN EM DIAS}
-   4. NODE_ENV={AMBIENTE DO PROJETO}.
+   1. MONGO_URI= mongodb+srv://SenacPTI:pdx8mrkebSutsKVH@nodeexpresscourse.3spgveu.mongodb.net/senac?retryWrites=true&w=majority
+   2. JWT_SECRET= &E)H@McQfTjWnZr4u7w!z%C*F-JaNdRg
+   3. JWT_LIFETIME=30d
+   4. NODE_ENV="development"
 
 ### Instalação
 
