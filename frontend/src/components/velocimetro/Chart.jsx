@@ -12,16 +12,14 @@ const PieChart = () => {
     is3D: true,
   };
   const [categorias, setCategorias] = useState([])
+  
   useEffect(() => {
     getCategories().then(response => {
-      data = response.map (response=>[response.tipo,response.quantidade])
+      data = response.map (response=>[response.produto.tipo,response.quantidade])
       data.unshift(['categorias', 'quantidade'])
-     setCategorias(data)
-      
+     setCategorias(data)    
     })
-  },[getCategories])
-
-  console.log(categorias)
+  },[])
 
   return (
     <Chart
