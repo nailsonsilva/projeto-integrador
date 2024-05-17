@@ -69,9 +69,10 @@ const createOrUpdateMovement = async (req, res) => {
         session: session,
       });
     } else {
-      if (movementQuantity > movement.quantidade) {
-        const difference = movementQuantity - movement.quantidade;
-        const newQuantity = product.quantidade - difference;
+      const difference = movement.quantidade + movementQuantity;
+
+      if (movementQuantity > 0) {
+        const newQuantity = product.quantidade - movementQuantity;
 
         if (newQuantity < 0) {
           throw new BadRequestError("Estoque insuficiente.");
@@ -86,7 +87,7 @@ const createOrUpdateMovement = async (req, res) => {
 
       movement = await Movement.findOneAndUpdate(
         { _id: movement._id },
-        { quantidade: movementQuantity },
+        { quantidade: difference },
         { new: true, runValidators: true, session: session }
       );
     }
