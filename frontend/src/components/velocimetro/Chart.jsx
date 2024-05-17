@@ -12,14 +12,22 @@ const PieChart = () => {
     is3D: true,
   };
   const [categorias, setCategorias] = useState([])
-  
+
   useEffect(() => {
     getCategories().then(response => {
-      data = response.map (response=>[response.produto.tipo,response.quantidade])
-      data.unshift(['categorias', 'quantidade'])
-     setCategorias(data)    
-    })
-  },[])
+      
+      const data_filter = response.filter(item => item.produto !== null);
+      const data = data_filter.map(item => [item.produto.tipo, item.quantidade]);
+      const quantidadePorTipo = data.reduce((acc, [tipo, quantidade]) => {
+        acc[tipo] = (acc[tipo] || 0) + quantidade;
+        return acc;
+      }, {});
+      
+      const categoriasArray = Object.entries(quantidadePorTipo);
+      categoriasArray.unshift(['categorias', 'quantidade']);
+      setCategorias(categoriasArray);
+    });
+  }, []);
 
   return (
     <Chart

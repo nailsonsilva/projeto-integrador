@@ -3,7 +3,6 @@ import { getProducts } from "../../services/products";
 import Sidebar from "../../components/shared/Sidebar";
 import { Flex, Heading, Box, Text, Image, Grid, Button } from "@chakra-ui/react";
 import CriarProduto from "../../components/Produto/CriarProduto";
-import arroz from "../../public/uploads/arroz.jpeg"
 
 const Produtos = () => {
     const [produtos, setProdutos] = useState([]);

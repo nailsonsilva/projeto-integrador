@@ -24,7 +24,8 @@ const Vendas = () => {
     
     useEffect( () => {
         getProducts().then (res =>{
-        setProdutos(res)
+        const produtos_tmp = res.filter(item => item.quantidade != 0)
+        setProdutos(produtos_tmp)
        }); 
     }, setProdutos);
 
