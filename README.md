@@ -30,7 +30,7 @@
 
 O sistema estoquix é solução tecnológica de qualidade, que auxilia organizações de pequeno porte na gestão de seu estoque, evitando que haja disperdícios de recursos e erros operacionais / logísticos ao longo de seus processos de negócio.
 
-As funcionalidades implementadas foram as seguintes:**cadastrar usuário**, **realizar login** e **fazer pedido**, sendo que o fluxo de uso foi baseado na jornada de usuário da persona - Gerente de restaurante. Esta persona, por meio da sugestão de compra do assistente virtual, realiza o pedido de compra de determinado produto para abastecer o estoque de seu estabelecimento.
+As funcionalidades implementadas foram as seguintes:**cadastrar usuário**, **realizar login**, **fazer pedido**, **cadastrar produto**, **Gráfico dinâmico do estoque**, sendo que o fluxo de uso da aplicação foi baseado na jornada de usuário das personas: Gerente de restaurante, Auxiliar de compras e representante de vendas.
 
 ### Tecnologias Utilizadas
 
