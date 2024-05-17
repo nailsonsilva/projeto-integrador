@@ -48,7 +48,7 @@ export default function Modal({isOpen, children, setModalOpen, productSelected})
                     <div style={MODAL_MAIN}>
                         <div style={MODAL_INFO_PRODUCT}>
                             <h4 style={{marginBottom:'40px'}}>{productSelected.nome}</h4>
-                            <img src={require(`../../public/uploads/${productSelected.imagem}`)} alt=""/>
+                            <img src={require(`../../public/uploads/${productSelected.imagem}`)} style={{maxHeight: "120px"}} alt=""/>
                         </div>
                         <div style={MODAL_QTD_PRODUCT}>
                             <div style={{display: 'flex', justifyContent: 'space-around', alignitems: 'center'}}>
