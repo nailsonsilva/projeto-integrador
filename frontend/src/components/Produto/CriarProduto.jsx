@@ -46,7 +46,7 @@ export default function CriarProduto({ isOpen, setModalOpen }) {
         e.preventDefault();
     }
     const handleSubmit = (e) => {
-        if (!product.descricao || !product.nome || !product.descricao ||
+        if (!product.descricao || !product.nome || !product.tipo ||
             !product.preco || !product.imagem || !product.quantidade
         ) {
             errorNotification("Atenção", "Todos os campos são obrigatórios")
