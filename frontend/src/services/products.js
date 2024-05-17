@@ -43,7 +43,9 @@ async function getCategories() {
     });
 }
 
-async function createProduct(product) {
+async function createProduct(product, nameUser) {
+  product.vendedor = nameUser;
+
   return await productsFetch.post(`/products/`, product)
     .then((res) => {
       return res;

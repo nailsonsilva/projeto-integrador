@@ -46,7 +46,9 @@ export default function CriarProduto({ isOpen, setModalOpen }) {
         e.preventDefault();
     }
     const handleSubmit = (e) => {
-        if (!product.descricao || !product.nome) {
+        if (!product.descricao || !product.nome || !product.descricao ||
+            !product.preco || !product.imagem || !product.quantidade
+        ) {
             errorNotification("Atenção", "Todos os campos são obrigatórios")
             return;
         }
@@ -55,11 +57,10 @@ export default function CriarProduto({ isOpen, setModalOpen }) {
 
         setProduct({
             ...product,
-            vendedor: user.nome,
             quantidade: parseInt(product.quantidade)
         });
 
-        createProduct(product).then(response => {
+        createProduct(product, user.nome).then(response => {
             if (response) {
                 addImage(file, response.data._id);
                 setModalOpen(!isOpen)
