@@ -39,7 +39,7 @@ const MyTextInput = ({ label, ...props }) => {
 
 const LoginForm = () => {
   const [isMember, setIsMember] = useState(false);
-  const { setupUser } = useAuth();
+  const { setupUser, getCurrentUser } = useAuth();
   const navigate = useNavigate();
 
   return (
@@ -65,8 +65,15 @@ const LoginForm = () => {
         if (isMember) {
           setupUser(values, "login")
             .then((res) => {
-              navigate("/dashboard");
-              successNotification("Sucesso!", "Usuario logado com sucesso!");
+              if(res.data.user.tipo === 'fornecedor'){
+                navigate("/dashboard-fornecedor");                
+              }else{
+                navigate("/dashboard");
+              }
+              successNotification(
+                "Sucesso!",
+                "Usuario logado com sucesso!"
+              );
             })
             .catch((err) => {
               console.log(err);
@@ -78,7 +85,11 @@ const LoginForm = () => {
         } else {
           setupUser(values, "register")
             .then((res) => {
-              navigate("/dashboard");
+              if(res.data.user.tipo === 'fornecedor'){
+                navigate("/dashboard-fornecedor");                
+              }else{
+                navigate("/dashboard");
+              }              
               successNotification(
                 "Sucesso!",
                 "Usuario registrado com sucesso!"

@@ -24,16 +24,17 @@ import {
   FiUser,
   FiBookOpen,
   FiPower,
+  FiPackage,
 } from "react-icons/fi";
 import { useAuth } from "../../context/AuthContext";
 import logo2 from "../../assets/logo2.png";
 
-const LinkItemsRedirect = [
+const linkItemsRedirectDefault = [
   { name: "Dashboard", icon: FiUser, path: "/dashboard" },
   { name: "Compras", icon: FiFileText, path: "compras" },
 ];
 
-const LinkItems = [
+const linkItems = [
   { name: "Movimentação", icon: FiFolder },
   { name: "Inventário", icon: FiStar },
   { name: "Financeiro", icon: FiShoppingBag },
@@ -41,13 +42,15 @@ const LinkItems = [
   { name: "Configuração", icon: FiSettings },
 ];
 
-export default function Sidebar({ children }) {
+export default function Sidebar({ children, tipoUsuario }) {
+
   const { isOpen, onOpen, onClose } = useDisclosure();
   return (
     <Box w="100%">
       <SidebarContent
         onClose={() => onClose}
         display={{ base: "none", md: "block" }}
+        tipoUsuario={tipoUsuario}
       />
       <Drawer
         isOpen={isOpen}
@@ -70,6 +73,14 @@ export default function Sidebar({ children }) {
 }
 
 const SidebarContent = ({ onClose, ...rest }) => {
+
+  const {tipoUsuario} = {...rest}
+  let linkItemsRedirect = [...linkItemsRedirectDefault];
+
+  if (tipoUsuario === "fornecedor") {  
+    linkItemsRedirect.push({ name: "Produtos", icon: FiPackage, path: "produtos" });
+  }
+  
   const { logoutUser } = useAuth();
 
   return (
@@ -90,7 +101,7 @@ const SidebarContent = ({ onClose, ...rest }) => {
         />
       </Flex>
       <Box mt={5}>
-        {LinkItemsRedirect.map((link) => (
+        {linkItemsRedirect.map((link) => (
           <NavItem
             key={link.name}
             icon={link.icon}
@@ -100,7 +111,7 @@ const SidebarContent = ({ onClose, ...rest }) => {
             {link.name}
           </NavItem>
         ))}
-        {LinkItems.map((link) => (
+        {linkItems.map((link) => (
           <NavItem key={link.name} icon={link.icon} color="white">
             {link.name}
           </NavItem>

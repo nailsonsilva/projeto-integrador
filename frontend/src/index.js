@@ -8,6 +8,8 @@ import Dashboard from "./pages/dashboard/Dashboard";
 import AuthProvider from "./context/AuthContext";
 import ProtectedRoute from "./components/shared/ProtectedRoute";
 import Compras from "./pages/compras/Compras";
+import DashboardFornecedor from "./pages/dashboardFornecedor/DashboardFornecedor";
+import Produtos from "./pages/produtos/Produtos";
 
 const { ToastContainer } = createStandaloneToast();
 
@@ -32,6 +34,23 @@ const router = createBrowserRouter([
       </ProtectedRoute>
     ),
   },
+  {
+    path: "/dashboard-fornecedor",
+    element: (
+      <ProtectedRoute>
+        <DashboardFornecedor />
+      </ProtectedRoute>
+    ),
+  },
+  {
+    path: "/produtos",
+    element: (
+      <ProtectedRoute>
+        <Produtos />
+      </ProtectedRoute>
+    ),
+  },
+
 ]);
 
 ReactDOM.createRoot(document.getElementById("root")).render(

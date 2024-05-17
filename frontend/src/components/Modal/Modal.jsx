@@ -5,7 +5,7 @@ import { FaRegMinusSquare } from "react-icons/fa";
 import { CloseButton } from '@chakra-ui/react'
 import { useState } from 'react';
 import Pedido from '../Pedido/Pedido';
-import { updateProduct } from '../../services/products';
+import { buyProduct } from '../../services/products';
 import { errorNotification } from '../../services/notification';
 
 export default function Modal({isOpen, children, setModalOpen, productSelected}) {
@@ -25,15 +25,10 @@ export default function Modal({isOpen, children, setModalOpen, productSelected})
 
     const handleSubmit = () => {
         const params = {
-            nome: productSelected.nome,
-            tipo: productSelected.tipo,
-            quantidade: productSelected.quantidade - quantidade,
-            preco: productSelected.preco,
-            descricao: productSelected.descricao,
-            vendedor: productSelected.vendedor
+            id: productSelected._id,
+            quantidade: quantidade,
         }
-
-        updateProduct(params, productSelected._id).then(response => {
+        buyProduct(params).then(response => {
             setOpenModalSucess(true);
         }, error => {        
             errorNotification(error.code, error.response.data.msg);
