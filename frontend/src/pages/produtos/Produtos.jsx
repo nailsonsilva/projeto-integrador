@@ -51,7 +51,7 @@ const Produtos = () => {
                     <Grid templateColumns="repeat(6, 1fr)" gap={6}>
                         {produtos.map((produto) => (
                             <Box key={produto.id} p={5} shadow="md" borderWidth="1px">
-                                <Image src={getImagePath(produto.imagem)} alt={produto.nome} style={{width: '135px', height: "auto"}} boxSize="150px" objectFit="cover" mb={4} />
+                                <Image src={getImagePath(produto.imagem)} alt={produto.nome} style={{ width: '135px', maxHeight: "120px" }} boxSize="150px" objectFit="cover" mb={4} />
                                 <Heading fontSize="xl">{produto.nome}</Heading>
                                 <Text mt={2}>R${produto.preco}</Text>
                             </Box>

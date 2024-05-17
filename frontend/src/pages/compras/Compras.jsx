@@ -53,7 +53,7 @@ const Vendas = () => {
                             <Tr borderBottom='1px solid #f7f7f7'>                        
                                 <Td w='30%' fontSize='14px'>
                                     <Flex alignItems="center">
-                                        <img src={getImagePath(produto.imagem)} alt="Imagem do produto" style={{ marginRight: '10px', width: '150px'}} />
+                                        <img src={getImagePath(produto.imagem)} alt="Imagem do produto" style={{ marginRight: '10px', maxHeight: "120px"}} />
                                         <Text fontWeight='600'>{produto.nome}</Text>
                                     </Flex>
                                 </Td>
